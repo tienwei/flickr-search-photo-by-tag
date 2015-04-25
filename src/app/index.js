@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('flickrPhotoSearchByTag', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ui.router', 'ui.bootstrap'])
+angular.module('flickrPhotoSearchByTag', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ui.router', 'ui.bootstrap', 'xml'])
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('home', {
