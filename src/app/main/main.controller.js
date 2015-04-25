@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('flickrPhotoSearchByTag')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope, FlickrApiService) {
     $scope.awesomeThings = [
       {
         'title': 'AngularJS',
@@ -61,4 +61,5 @@ angular.module('flickrPhotoSearchByTag')
     angular.forEach($scope.awesomeThings, function(awesomeThing) {
       awesomeThing.rank = Math.random();
     });
+    FlickrApiService.flickrAPI();
   });
