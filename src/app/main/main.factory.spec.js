@@ -20,10 +20,13 @@ describe('factories', function(){
 		});
 	}));
 
-	// test getFlickrPhotoUrlArray
-	it('should get the photo array from the search', inject(function(FlickrApiService){
+	// test getFlickrPhotoData
+	it('should get the photo data from the search', inject(function(FlickrApiService){
 		FlickrApiService.flickrAPI('selfie').then(function(response){
-			expect(angular.isArray(FlickrApiService.getFlickrPhotoUrlArray(FlickrApiService.xmlToJson(response.data)))).toBeTruthy();
+			// return photo url array
+			expect(angular.isArray(FlickrApiService.getFlickrPhotoData(FlickrApiService.xmlToJson(response.data)).photoArr)).toBeTruthy();
+			// initial page is 1
+			expect(FlickrApiService.getFlickrPhotoData(FlickrApiService.xmlToJson(response.data)).currentPage).toBe(1);
 		});
 	}));
 });

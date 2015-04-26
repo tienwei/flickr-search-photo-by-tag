@@ -1,28 +1,23 @@
 <div class="container">
-
-  <!-- <div ng-include="'app/components/navbar/navbar.html'"></div> -->
-
   <div class="jumbotron text-center">
     <h1>Flickr Search By Tag App</h1>
     <p class="lead">
-      <img src="assets/images/yeoman.png" alt="I'm Yeoman"><br>
-      Simple one-page web app for searching photos with tags from flickr
+      Powered by <img src="https://avatars3.githubusercontent.com/u/2196386?v=3&amp;s=40" alt="Tien"><br>
+      Scroll down to view more flickr "selfies" 
     </p>
   </div>
-
-  <div class="row">
+  <div ng-include="'app/components/searchbar/searchbar.html'"></div>
+  <hr>
+  <div class="row" infinite-scroll="getNextPagePhotoUrlByTag('selfie')" infinite-scroll-distance="0">
     <div class="col-sm-6 col-md-4" ng-repeat="photoUrl in photoUrlArr">
       <div class="thumbnail">
         <img  ng-src="{{photoUrl}}" >
-        <!-- <div class="caption">
-          <h3>{{awesomeThing.title}}</h3>
-          <p>{{awesomeThing.description}}</p>
-          <p><a ng-href="{{awesomeThing.url}}">{{awesomeThing.url}}</a></p>
-        </div> -->
       </div>
     </div>
   </div>
-
+  <div class="caption text-center" ng-show="loading">
+    <b>More photos loading ... </b><img width="30" height="30" src="assets/images/ajax_spinner.gif" />
+  </div>
   <hr>
 
   <div class="footer">

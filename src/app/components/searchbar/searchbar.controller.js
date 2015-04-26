@@ -1,6 +1,6 @@
 'use strict';
 
 angular.module('flickrPhotoSearchByTag')
-  .controller('NavbarCtrl', function ($scope) {
+  .controller('SearchCtrl', function ($scope) {
     $scope.date = new Date();
   });
