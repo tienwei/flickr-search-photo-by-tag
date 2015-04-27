@@ -5,11 +5,10 @@
 	SearchCtrl.$inject = ['$scope', '$state'];
 	function SearchCtrl ($scope, $state) {
 		$scope.gotoTagSearch = gotoTagSearch;
-
-		function gotoTagSearch(tag) {
+		function gotoTagSearch() {
 			var typedTag = $scope.searchTag;
 	      	$state.go('tag', {'tag':typedTag});
 	    }
-	};	
+	}
 })();
 

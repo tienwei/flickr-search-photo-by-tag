@@ -9,14 +9,17 @@ describe('controllers', function(){
     scope = $rootScope.$new();
   }));
 
-  // it('should define more than 5 awesome things', inject(function($controller) {
-  //   expect(scope.awesomeThings).toBeUndefined();
-
-  //   $controller('MainCtrl', {
-  //     $scope: scope
-  //   });
-
-  //   expect(angular.isArray(scope.awesomeThings)).toBeTruthy();
-  //   expect(scope.awesomeThings.length > 5).toBeTruthy();
-  // }));
+  it('should return a photo url array', inject(function($controller) {
+    $controller('MainCtrl', {
+      $scope: scope
+    });
+    expect(scope.getPhotoUrlArrByTag).toBeDefined();
+    scope.getPhotoUrlArrByTag('selfie').then(function(photoUrlArr){
+      expect(angular.isArray(photoUrlArr)).toBeTruthy();
+      // selfie photos will be more than one
+      expect((photoUrlArr).length).toBeGreaterThan(1);
+      // photo url starts with 'http://farm'
+      expect(photoUrlArr[0]).toContain('http://farm');
+    });
+  }));
 });

@@ -1,32 +1,38 @@
 'use strict';
+ 
+describe('flickr api factory', function(){
+	var apiUrl = 'https://api.flickr.com/services/rest/?&method=flickr.photos.search&api_key=f88e45b3d09c37b1336a8c1561d414b8' + 
+				 '&tags=selfie&per_page=6&page=1';
+	beforeEach(function(){
+		module('flickrPhotoSearchByTag');
 
-describe('factories', function(){
-
-	beforeEach(module('flickrPhotoSearchByTag'));
-
+		module(function($provide) {
+    
+		// Fake StoreService Implementation returning a promise
+		$provide.value('StoreService', {
+		listStores: function() {
+		  return { 
+		    then: function(callback) {return callback([{ some: "thing", hoursInfo: {isOpen: true}}]);}
+		  };
+		},
+		chooseStore: function() { return null;}
+		});
+	});
 	// test flickrPhotoSearchApi
-	it('returns 200 status', inject(function(FlickrApiService){
-		FlickrApiService.flickrPhotoSearchApi('selfie').then(function(response){
-			// Successful return code: 200
+	it('should return 200 status', inject(function(FlickrApiService, $httpBackend){
+		$httpBackend.expect('GET', apiUrl).respond(200, '<photos>flickr photo search xml</photos>');
+		FlickrApiService.flickrPhotoSearchApi('selfie',1).then(function(response){
 			expect(response.status).toBe(200);
 		});
-	}));
-
-	// test xmlToJson
-	it('returns a json', inject(function(FlickrApiService){
-		FlickrApiService.flickrPhotoSearchApi('selfie').then(function(response){
-			// convert xml to json
-			expect(angular.isJson(FlickrApiService.xmlToJson(response.data))).toBeTruthy();
-		});
+		$httpBackend.flush();
 	}));
 
 	// test getFlickrPhotoData
-	it('should get the photo data from the search', inject(function(FlickrApiService){
-		FlickrApiService.flickrPhotoSearchApi('selfie').then(function(response){
-			// return photo url array
-			expect(angular.isArray(FlickrApiService.getFlickrPhotoData(FlickrApiService.xmlToJson(response.data)).photoArr)).toBeTruthy();
-			// initial page is 1
-			expect(FlickrApiService.getFlickrPhotoData(FlickrApiService.xmlToJson(response.data)).currentPage).toBe(1);
+	it('should get the photo data from the search with selfie tag', inject(function(FlickrApiService){
+		$httpBackend.expect('GET', apiUrl).respond(200, '<photos>flickr photo search xml</photos>');
+		FlickrApiService.getFlickrPhotoData('selfie',1).then(function(response){
+			expect(response.status).toBe(200);
 		});
+		$httpBackend.flush();
 	}));
 });
