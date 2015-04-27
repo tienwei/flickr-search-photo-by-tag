@@ -8,17 +8,17 @@
 
 	function FlickrApiService($http, x2js){
 		var flickrApiService = {
-			flickrAPI:flickrAPI,
+			flickrPhotoSearchApi:flickrPhotoSearchApi,
 			xmlToJson:xmlToJson,
 			getFlickrPhotoData:getFlickrPhotoData
 		};
 		return flickrApiService;
 
-		function flickrAPI(tag, pageNo){
+		function flickrPhotoSearchApi(tag, pageNo){
 			// config api params
 			var apiKey = 'f88e45b3d09c37b1336a8c1561d414b8',
 			apiSecret = 'dd7250e777e08691',
-			perPage = 5,
+			perPage = 6,
 			page = pageNo,
 			apiUrl = 'https://api.flickr.com/services/rest/?&method=flickr.photos.search&api_key=' + 
 				apiKey + '&tags=' + tag + '&per_page=' + perPage + '&page=' + pageNo;

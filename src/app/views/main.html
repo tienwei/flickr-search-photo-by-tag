@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="jumbotron text-center">
+    <h1>Flickr Search By Tag App</h1>
+    <p class="lead">
+      Powered by <img src="https://avatars3.githubusercontent.com/u/2196386?v=3&amp;s=40" alt="Tien"><br>
+      Scroll down to view more flickr <b>"selfies"</b> photos
+    </p>
+  </div>
+  <div ng-include="'app/components/searchbar/searchbar.html'"></div>
+  <hr>
+  <div class="row" infinite-scroll="getNextPageSelfiePhotoUrl()" infinite-scroll-distance="0">
+    <div class="col-sm-6 col-md-4" ng-repeat="photoUrl in photoUrlArr">
+      <div class="thumbnail">
+        <img  ng-src="{{photoUrl}}" >
+      </div>
+    </div>
+  </div>
+  <div class="caption text-center" ng-show="loading">
+    <b>More photos loading ... </b><img width="30" height="30" src="assets/images/ajax_spinner.gif" />
+  </div>
+  <hr>
+
+  <div class="footer">
+    <p>With ♥ from <a href="https://github.com/tienwei/flickr-search-photo-by-tag">flickr-search-photo-by-tag</a> by Tien</p>
+  </div>
+
+</div>

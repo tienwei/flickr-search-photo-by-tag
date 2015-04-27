@@ -9,11 +9,11 @@
     $scope.photoUrlArr = [];
 
     // scope methods
-    $scope.getNextPagePhotoUrlByTag = getNextPagePhotoUrlByTag;
+    $scope.getNextPageSelfiePhotoUrl = getNextPageSelfiePhotoUrl;
 
     function getPhotoUrlArrByTag(tag){
       // need to return a promise for asyn callback
-      return FlickrApiService.flickrAPI(tag, $scope.currentPage).then(function(response){
+      return FlickrApiService.flickrPhotoSearchApi(tag, $scope.currentPage).then(function(response){
         // convert xml format to json
         var jsonData = FlickrApiService.xmlToJson(response.data),
         photoData = FlickrApiService.getFlickrPhotoData(jsonData),
@@ -23,11 +23,11 @@
       });
     }
 
-    function getNextPagePhotoUrlByTag(tag){
+    function getNextPageSelfiePhotoUrl(){
       // show loading message
       $scope.loading = true;
       // concat new photo url array
-      getPhotoUrlArrByTag(tag).then(function(photoUrlArr) {
+      getPhotoUrlArrByTag('selfie').then(function(photoUrlArr) {
         for(var i=0;i<photoUrlArr.length;i++) {
           if($scope.photoUrlArr.indexOf(photoUrlArr[i]) == -1) {
             $scope.photoUrlArr.push(photoUrlArr[i]);

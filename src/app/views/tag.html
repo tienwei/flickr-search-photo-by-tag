@@ -3,12 +3,12 @@
     <h1>Flickr Search By Tag App</h1>
     <p class="lead">
       Powered by <img src="https://avatars3.githubusercontent.com/u/2196386?v=3&amp;s=40" alt="Tien"><br>
-      Scroll down to view more flickr "selfies" 
+      Scroll down to view more  <b>"{{tag}}"</b> photos
     </p>
   </div>
   <div ng-include="'app/components/searchbar/searchbar.html'"></div>
   <hr>
-  <div class="row" infinite-scroll="getNextPagePhotoUrlByTag('selfie')" infinite-scroll-distance="0">
+  <div class="row" infinite-scroll="getNextPagePhotoUrlByTag()" infinite-scroll-distance="0">
     <div class="col-sm-6 col-md-4" ng-repeat="photoUrl in photoUrlArr">
       <div class="thumbnail">
         <img  ng-src="{{photoUrl}}" >
