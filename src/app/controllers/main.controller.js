@@ -18,6 +18,7 @@
         var jsonData = FlickrApiService.xmlToJson(response.data),
         photoData = FlickrApiService.getFlickrPhotoData(jsonData),
         photoUrlArr = photoData.photoArr;
+        // parse page string into an integer
         $scope.currentPage = parseInt(photoData.currentPage);
         return photoUrlArr;
       });
@@ -26,7 +27,7 @@
     function getNextPageSelfiePhotoUrl(){
       // show loading message
       $scope.loading = true;
-      // concat new photo url array
+      // push new photo url array
       getPhotoUrlArrByTag('selfie').then(function(photoUrlArr) {
         for(var i=0;i<photoUrlArr.length;i++) {
           if($scope.photoUrlArr.indexOf(photoUrlArr[i]) == -1) {
@@ -35,7 +36,7 @@
             
         }
       }).catch(function (err) {
-        // log error somehow.
+        // log errors
         console.log(err);
       })
       .finally(function () {

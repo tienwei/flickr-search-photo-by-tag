@@ -36,13 +36,14 @@
 		function getFlickrPhotoData(jsonObj) {
 			var photoData = {};
 			var photoArr = jsonObj.rsp.photos.photo.map(function (photo) {
-			// parse photo urls
+			// parse photo urls with corresponding parameters
             return "http://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg"
                 .replace("{farm-id}", photo._farm)
                 .replace("{server-id}", photo._server)
                 .replace("{id}", photo._id)
                 .replace("{secret}", photo._secret);
             });
+            // assign the first page to photoData object
             photoData.currentPage = jsonObj.rsp.photos._page;
             photoData.photoArr = photoArr;
         	return photoData;
