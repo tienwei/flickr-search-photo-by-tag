@@ -7,13 +7,13 @@ angular.module('flickrPhotoSearchByTag', ['myApp.config', 'ngAnimate', 'ngCookie
       .state('home', {
         url: '/',
         templateUrl: 'app/views/photowall.html',
-        controller: 'MainCtrl'
+        controller: 'MainCtrl as vm'
       })
       // for tag search
       .state('tag', {
         url: '/tags/:tag',
         templateUrl: 'app/views/photowall.html',
-        controller: 'MainCtrl'
+        controller: 'MainCtrl as vm'
       });
 
     $urlRouterProvider.otherwise('/');

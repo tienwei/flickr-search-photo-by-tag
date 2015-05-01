@@ -6,9 +6,9 @@ describe('flickr api factory', function(){
 	beforeEach(module('flickrPhotoSearchByTag'));
 	// test flickrPhotoSearchApi
 	it('should return ok status', inject(function(FlickrApiService, $httpBackend){
-		$httpBackend.expect('GET', apiUrl).respond(ok, '<photos>flickr photo search xml</photos>');
+		$httpBackend.expect('GET', apiUrl).respond('ok', '<photos>flickr photo search xml</photos>');
 		FlickrApiService.flickrPhotoSearchApi('selfie',1).then(function(response){
-			expect(response.status).toBe(200);
+			expect(response.status).toBe('ok');
 		});
 		$httpBackend.flush();
 	}));
