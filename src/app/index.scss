@@ -4,10 +4,30 @@
   color: #000;
   padding: 0.2em 0;
 }
-.thumbnail > img, .thumbnail a > img {
-	height: 270px !important;
+
+.thumbnail {
+	border: 0px !important;
+	background-repeat: no-repeat;
+  	background-size: cover;
+	background-position: center center;
+	background-image: url('../assets/images/photo_preload.png');
+	height:300px;
+	position:relative;
+	.photo_title {
+		position:absolute;
+		bottom: 0px;
+		left: 5px;
+		background-color: rgba(0,0,0,0.7);
+		h4 {
+			padding: 0px 10px;
+			color: #fff;
+		}
+	}
 }
 
+#searchBar {
+	margin-top: 8px;
+}
 
 /* Do not remove this comments bellow. It's the markers used by gulp-inject to inject
    all your sass files automatically */

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('flickrPhotoSearchByTag', ['myApp.config', 'ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ui.router', 'ui.bootstrap', 'xml', 'infinite-scroll'])
+angular.module('flickrPhotoSearchByTag', ['myApp.config', 'ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ui.router', 'ui.bootstrap', 'infinite-scroll'])
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       // selfie home page

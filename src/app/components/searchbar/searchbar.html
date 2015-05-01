@@ -1,12 +1,17 @@
 <div class="row" ng-controller='SearchCtrl'>
-  <div class="col-lg-6">
-  </div><!-- /.col-lg-6 -->
-  <div class="col-lg-6">
-    <div class="input-group">
-      <input type="text" class="form-control" name="searchTag" ng-model="searchTag" placeholder="Enter a Tag you ♥ :) here">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button" ng-click='gotoTagSearch()'>Search</button>
-      </span>
-    </div><!-- /input-group -->
-  </div><!-- /.col-lg-6 -->
-</div><!-- /.row -->
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Demo</a>
+        <div class="col-xs-9 col-sm-10" id="searchBar">
+            <div class="input-group">
+              <input type="text" class="form-control" ng-model="searchTag" placeholder="Enter a term you ♥ :) here" name="srch-term" id="srch-term">
+              <div class="input-group-btn">
+                <button class="btn btn-default" type="submit" ng-click='gotoTagSearch()'><span class="glyphicon glyphicon-search"></span></button>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

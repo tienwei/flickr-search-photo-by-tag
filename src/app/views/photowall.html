@@ -3,10 +3,15 @@
   <div ng-include="'app/components/searchbar/searchbar.html'"></div>
   <hr>
   <div class="row" infinite-scroll="getNextPagePhotoUrlByTag()" infinite-scroll-distance="0">
-    <div class="col-sm-6 col-md-4" ng-repeat="photoUrl in photoUrlArr">
-      <div class="thumbnail">
-        <a href="{{photoUrl}}"><img  ng-src="{{photoUrl}}" ></a>
-      </div>
+    <div class="col-sm-6 col-md-4" ng-repeat="photo in photoArr" ng-if="withResult">
+      <a href="{{photoUrl}}">
+        <div class="thumbnail" style="background-image: url({{photo.url}})">
+          <div class="photo_title"><h4>{{photo.title}}</h4></div>
+        </div>
+      </a>
+    </div>
+    <div class="col-sm-12">
+      <h3 class="text-center text-danger" ng-if="!withResult">{{message}}</h3>
     </div>
   </div>
   <div ng-include="'app/components/footer/footer.html'"></div>
