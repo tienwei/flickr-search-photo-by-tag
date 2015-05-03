@@ -56,7 +56,7 @@
 
 		function photoUrlParser(photo) {
 			// parse photo urls with corresponding parameters
-            return {'id':photo.id, 'title':photo.title,'url':'http://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg'
+            return {'id':photo.id, 'title':photo.title,'url':'https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg'
                 .replace('{farm-id}', photo.farm)
                 .replace('{server-id}', photo.server)
                 .replace('{id}', photo.id)
