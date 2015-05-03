@@ -5,11 +5,11 @@
 
 'use strict';
 
-var MainPage = function() { 
+var PhotoWallPage = function() { 
   this.jumbEl = element(by.css('.jumbotron'));
   this.h1El = this.jumbEl.element(by.css('h1'));
   this.imgEl = this.jumbEl.element(by.css('img'));
-  this.thumbnailEls = element(by.css('body')).all(by.repeater('awesomeThing in awesomeThings'));
+  this.thumbnailEls = element(by.css('body')).all(by.repeater('photo in vm.photoArr'));
 };
 
-module.exports = new MainPage();
+module.exports = new PhotoWallPage();

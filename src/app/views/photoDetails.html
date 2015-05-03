@@ -1,0 +1,20 @@
+<div class="container">
+  <div ng-include="'app/components/searchbar/searchbar.html'"></div>
+  <div ng-include="'app/components/header/header.html'"></div>
+  <hr>
+  <div class="row">
+    <div>
+          <img class="img-responsive element-center" ng-src="{{::vm.url}}" />
+    </div>
+    <div class="col-md-9 col-md-offset-3 col-sm-10 col-sm-offset-2 col-xs-12" ng-if='vm.permission'>
+      <hr>
+      <h3>EXIF Data:</h3>
+      <dl class="dl-horizontal">
+        <dt ng-repeat-start='item in vm.exif'>{{item.label}}:</dt>
+        <dd ng-repeat-end>{{item.raw._content}}</dd>
+      </dl>
+      <button class="btn btn-default" type="submit" ng-click='vm.goBack()'><span class="glyphicon glyphicon-menu-left"></span>Back to the "{{::vm.currentTag}}" photos</button>
+    </div>
+  </div>
+  <div ng-include="'app/components/footer/footer.html'"></div>
+</div>

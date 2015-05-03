@@ -29,6 +29,23 @@
 	margin-top: 8px;
 }
 
+.element-center {
+	margin: 0 auto;
+}
+
+@media (min-width: 768px){
+	/* Photo details exif */
+	.col-md-9 .dl-horizontal {
+		& dt{
+			width: 240px;
+		}
+		& dd {
+			margin-left: 250px;
+		}	
+	} 	
+}
+
+
 /* Do not remove this comments bellow. It's the markers used by gulp-inject to inject
    all your sass files automatically */
 // injector

@@ -1,22 +1,28 @@
 (function(){
   'use strict';
 
-  angular.module('flickrPhotoSearchByTag').controller('MainCtrl', MainCtrl);
-  MainCtrl.$inject = [ '$stateParams', 'APP_NAME', 'FlickrApiService'];
+  /* @ngInject */
   function MainCtrl( $stateParams, APP_NAME, FlickrApiService){
     // scope variables
     var vm = this;
     vm.currentPage = 1;
     vm.photoArr = [];
 
-    // check if a tag is set, otherwise use the default tag 'selfie'
-    vm.tag = (typeof $stateParams.tag !== 'undefined')?$stateParams.tag:'sydney';
+    // check if a tag is set, otherwise use the default tag '4mation'
+    vm.tag = (typeof $stateParams.tag !== 'undefined')?$stateParams.tag:'4mation';
+    vm.title = vm.tag;
     vm.APP_NAME = APP_NAME;
+    vm.description = 'Scroll down to view more flickr photos';
 
     // scope methods
     vm.getPhotoUrlArrByTag = getPhotoUrlArrByTag;
     vm.getNextPagePhotoUrlByTag = getNextPagePhotoUrlByTag;
 
+    /**
+    *  name: getPhotoUrlArrByTag 
+    *  desc: call FlickrApiService to retrieve data from flickr api
+    *  @param {string} tag: search term
+    */
     function getPhotoUrlArrByTag(tag){
       // need to return a promise for asyn callback
       return FlickrApiService.getFlickrPhotoData(tag, vm.currentPage).then(function(){
@@ -31,6 +37,10 @@
       });
     }
 
+    /**
+    *  name: getNextPagePhotoUrlByTag 
+    *  desc: get the unique photo array and then render on the photowall view
+    */
     function getNextPagePhotoUrlByTag(){
       // show loading message
       vm.loading = true;
@@ -56,11 +66,12 @@
       });
     }
 
-    /*
-      vm function checks url uniqueness to prevent from populating duplicated photos
-      @ photoArr: unique photo array with title and url information
-      @ obj: a single photo object with title and url information
-     */
+    /**
+    *  name: getUniquePhotoUrlArr
+    *  desc: the function checks url uniqueness to prevent from populating duplicated photos
+    *  @param {array} photoArr: unique photo array with title and url information
+    *  @param {object} obj: a single photo object with title and url information
+    */
     function getUniquePhotoUrlArr(photoArr, obj) {
       var unique = true,
       uniquePhotoUrlArr = photoArr;
@@ -78,6 +89,9 @@
       return uniquePhotoUrlArr;
     }
   }
+
+  angular.module('flickrPhotoSearchByTag').controller('MainCtrl', MainCtrl);
+  MainCtrl.$inject = [ '$stateParams', 'APP_NAME', 'FlickrApiService'];
 })();
 
   

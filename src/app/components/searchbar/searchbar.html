@@ -1,13 +1,13 @@
-<div class="row" ng-controller='SearchCtrl'>
+<div class="row" ng-controller='SearchCtrl as vm'>
   <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
         <a class="navbar-brand" href="#">Demo</a>
         <div class="col-xs-9 col-sm-10" id="searchBar">
             <div class="input-group">
-              <input type="text" class="form-control" ng-model="searchTag" placeholder="Enter a term you ♥ :) here" name="srch-term" id="srch-term">
+              <input type="text" class="form-control" ng-model="vm.searchTag" placeholder="Enter a term you ♥ :) here" name="srch-term" id="srch-term">
               <div class="input-group-btn">
-                <button class="btn btn-default" type="submit" ng-click='gotoTagSearch()'><span class="glyphicon glyphicon-search"></span></button>
+                <button class="btn btn-default" type="submit" ng-click='vm.gotoTagSearch()'><span class="glyphicon glyphicon-search"></span> Submit</button>
               </div>
             </div>
         </div>
